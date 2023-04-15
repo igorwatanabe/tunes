@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
-import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 class Header extends React.Component {
   state = {

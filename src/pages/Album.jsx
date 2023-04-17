@@ -25,8 +25,7 @@ class Album extends React.Component {
     } = this.state;
     return (
       <div data-testid="page-album">
-        {console.log(songsAlbum[1])}
-        {/* <p>{songsAlbum['0'].collectionName}</p> */}
+        {console.log(songsAlbum)}
         { songsAlbum.map((element, index) => (
           (element.wrapperType === 'collection')
             ? (
@@ -39,6 +38,7 @@ class Album extends React.Component {
                 key={ index }
                 previewUrl={ element.previewUrl }
                 trackName={ element.trackName }
+                trackId={ element.trackId }
               />
             ))) }
       </div>

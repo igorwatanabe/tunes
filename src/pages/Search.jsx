@@ -96,7 +96,6 @@ class Search extends React.Component {
                           Link
                         </Link>
                       </p>))}
-                    {console.log(album)}
                   </>
                 ) }
             </form>

@@ -10,12 +10,10 @@ class Header extends React.Component {
   };
 
   componentDidMount() {
-    console.log('componentDidMount');
     this.renderizaUser();
   }
 
   renderizaUser = async () => {
-    console.log(getUser());
     this.setState({
       isLoading: true,
     }, async () => {

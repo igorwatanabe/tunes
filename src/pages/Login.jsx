@@ -11,19 +11,6 @@ class Login extends React.Component {
     isLoading: false,
   };
 
-  // componentDidMount() {
-  //   console.log('componentDidMount');
-  // }
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log('shouldComponentUpdate');
-  //   return true;
-  // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log('componentDidUpdate');
-  // }
-
   validation = () => {
     const {
       loginName,

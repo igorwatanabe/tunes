@@ -85,8 +85,8 @@ class Search extends React.Component {
               { album.length === 0 ? <p>{noAlbum}</p>
                 : (
                   <>
-                    { album.map((results) => (
-                      <p key={ results.artistId }>
+                    { album.map((results, index) => (
+                      <p key={ index }>
                         { results.collectionName }
                         <Link
                           to={ `/album/${results.collectionId

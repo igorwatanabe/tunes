@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Loading from './Loading';
 
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends React.Component {
   state = {
@@ -28,6 +28,7 @@ class MusicCard extends React.Component {
 
   onInputChange = (event) => {
     const { trackId } = this.props;
+    const { favorite } = this.state;
     const { target } = event;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -36,10 +37,17 @@ class MusicCard extends React.Component {
       [name]: value,
       isLoading: true,
     }, async () => {
-      await addSong(trackId);
-      this.setState({
-        isLoading: false,
-      });
+      if (favorite) {
+        await removeSong(trackId);
+        this.setState({
+          isLoading: false,
+        });
+      } else {
+        await addSong(trackId);
+        this.setState({
+          isLoading: false,
+        });
+      }
     });
   };
 

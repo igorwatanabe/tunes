@@ -29,10 +29,10 @@ class Album extends React.Component {
         { songsAlbum.map((element, index) => (
           (element.wrapperType === 'collection')
             ? (
-              <>
-                <p data-testid="artist-name" key={ index }>{ element.artistName }</p>
-                <p data-testid="album-name" key={ index }>{ element.collectionName }</p>
-              </>
+              <div key={ index }>
+                <p data-testid="artist-name">{ element.artistName }</p>
+                <p data-testid="album-name">{ element.collectionName }</p>
+              </div>
             ) : (
               <MusicCard
                 key={ index }

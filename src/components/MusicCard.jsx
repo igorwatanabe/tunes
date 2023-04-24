@@ -8,10 +8,10 @@ class MusicCard extends React.Component {
   state = {
     isLoading: false,
     favorite: false,
-    // favoriteList: [],
   };
 
   async componentDidMount() {
+    console.log('didMount');
     this.setState({
       isLoading: true,
     });
@@ -19,16 +19,20 @@ class MusicCard extends React.Component {
     const { trackId } = this.props;
     this.setState({
       isLoading: false,
-      // favoriteList: [...favorites],
       favorite: favorites.some((song) => song.trackId === trackId),
     });
-    console.log('mount');
-    console.log(getFavoriteSongs());
   }
 
-  onInputChange = (event) => {
-    const { trackId } = this.props;
+  async componentDidUpdate() {
+    console.log('didUpdate');
+    // this.funcaoAtualizar();
+  }
+
+  onInputChange = async (event) => {
+    const { props } = this;
+    const { refreshFavorites } = props;
     const { favorite } = this.state;
+    console.log(props);
     const { target } = event;
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -36,20 +40,26 @@ class MusicCard extends React.Component {
     this.setState({
       [name]: value,
       isLoading: true,
-    }, async () => {
-      if (favorite) {
-        await removeSong(trackId);
-        this.setState({
-          isLoading: false,
-        });
-      } else {
-        await addSong(trackId);
-        this.setState({
-          isLoading: false,
-        });
-      }
     });
+    if (favorite) {
+      await removeSong(props);
+      this.setState({
+        isLoading: false,
+      });
+    } else {
+      await addSong(props);
+      this.setState({
+        isLoading: false,
+      });
+    }
+    refreshFavorites();
   };
+
+  // funcaoAtualizar = async () => {
+  //   const { refreshFavorites } = this.props;
+  //   const newFavoritesSongs = await getFavoriteSongs();
+  //   refreshFavorites(newFavoritesSongs);
+  // };
 
   render() {
     const {
@@ -71,7 +81,9 @@ class MusicCard extends React.Component {
               <p>{trackName}</p>
               <audio data-testid="audio-component" src={ previewUrl } controls>
                 <track kind="captions" />
-                {/* O seu navegador não suporta o elemento{" "} */}
+                O seu navegador não suporta o elemento
+                {' '}
+                {' '}
                 <code>audio</code>
               </audio>
 
@@ -93,10 +105,15 @@ class MusicCard extends React.Component {
   }
 }
 
+MusicCard.defaultProps = {
+  refreshFavorites: () => {},
+};
+
 MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   trackId: PropTypes.number.isRequired,
   previewUrl: PropTypes.string.isRequired,
+  refreshFavorites: PropTypes.func,
 };
 
 export default MusicCard;

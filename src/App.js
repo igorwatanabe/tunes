@@ -32,10 +32,16 @@ class App extends React.Component {
               </>
             ) }
           />
-          <Route exact path="/favorites">
-            <Favorites />
-            <Header />
-          </Route>
+          <Route
+            exact
+            path="/favorites"
+            render={ (props) => (
+              <>
+                <Header />
+                <Favorites { ...props } />
+              </>
+            ) }
+          />
           <Route exact path="/profile">
             <Header />
             <Profile />

@@ -100,7 +100,8 @@ class ProfileEdit extends React.Component {
     });
     this.setState({
       isLoading: false,
-    }, () => history.push('/profile'));
+    });
+    history.push('/profile');
   };
 
   render() {
@@ -168,7 +169,7 @@ class ProfileEdit extends React.Component {
                 disabled={ isSaveButtonDisabled }
                 onClick={ () => this.updateUserInfo() }
               >
-                Salvar
+                Editar perfil
               </button>
             </form>
           )}

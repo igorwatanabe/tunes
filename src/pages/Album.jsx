@@ -11,9 +11,7 @@ class Album extends React.Component {
   async componentDidMount() {
     const { match: { params } } = this.props;
     const { id } = params;
-    console.log(this.props);
     const songs = await getMusics(id);
-    console.log(songs);
     this.setState({
       songsAlbum: [...songs],
     });
@@ -25,7 +23,6 @@ class Album extends React.Component {
     } = this.state;
     return (
       <div data-testid="page-album">
-        {console.log(songsAlbum)}
         { songsAlbum.map((element, index) => (
           (element.wrapperType === 'collection')
             ? (

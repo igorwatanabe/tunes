@@ -37,7 +37,6 @@ class Login extends React.Component {
 
   onClickEntrar = async (nomeDigitado) => {
     const { history } = this.props;
-    console.log(history);
     this.setState({
       isLoading: true, // altera no state, para aparecer o Carregando...
     }, async () => {

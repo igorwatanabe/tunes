@@ -46,10 +46,16 @@ class App extends React.Component {
             <Header />
             <Profile />
           </Route>
-          <Route exact path="/profile/edit">
-            <Header />
-            <ProfileEdit />
-          </Route>
+          <Route
+            exact
+            path="/profile/edit"
+            render={ (props) => (
+              <>
+                <Header />
+                <ProfileEdit { ...props } />
+              </>
+            ) }
+          />
           <Route exact component={ NotFound } />
         </Switch>
       </main>

@@ -28,7 +28,6 @@ class Profile extends React.Component {
       userDescription: user.description,
       userImg: user.image,
     });
-    console.log(user);
   };
 
   render() {
@@ -41,6 +40,9 @@ class Profile extends React.Component {
     } = this.state;
     return (
       <div data-testid="page-profile">
+        <Link to="/profile/edit">
+          <button>Editar perfil</button>
+        </Link>
         { isLoading ? <Loading />
           : (
             <>
@@ -48,9 +50,6 @@ class Profile extends React.Component {
               <p>{userEmail}</p>
               <p>{userDescription}</p>
               <img data-testid="profile-image" src={ userImg } alt="imagem do usuário" />
-              <Link to="/profile/edit">
-                <button>Editar perfil</button>
-              </Link>
             </>
           )}
       </div>

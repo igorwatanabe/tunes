@@ -11,11 +11,6 @@ class Favorites extends React.Component {
 
   componentDidMount() {
     this.retrievingList();
-    console.log('didMountFavo');
-  }
-
-  componentDidUpdate() {
-    console.log('didUpFavo');
   }
 
   retrievingList = async () => {
@@ -29,14 +24,6 @@ class Favorites extends React.Component {
       favoriteList,
     });
   };
-
-  // refreshFavorites = async (newFavoritesSongs) => {
-  //   console.log('FAV');
-  //   console.log(newFavoritesSongs);
-  //   this.setState({
-  //     favoriteList: newFavoritesSongs,
-  //   });
-  // };
 
   render() {
     const { isLoading, favoriteList } = this.state;

@@ -65,10 +65,14 @@ class Search extends React.Component {
       <div data-testid="page-search">
         {isLoading ? <h2><Loading /></h2>
           : (
-            <form>
+            <form className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
               <input
                 type="text"
                 name="searchArtist"
+                className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20
+                text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+                 focus:ring-2
+                focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 value={ searchArtist }
                 data-testid="search-artist-input"
                 placeholder="Nome do Artista"
@@ -76,6 +80,10 @@ class Search extends React.Component {
               />
               <button
                 data-testid="search-artist-button"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5
+                text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500
+                focus-visible:outline focus-visible:outline-2
+                focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 disabled={ buttonSearchDisabled }
                 onClick={ () => this.onClickPesquisar(searchArtist) }
               >
@@ -84,19 +92,21 @@ class Search extends React.Component {
               <h2>{ artist }</h2>
               { album.length === 0 ? <p>{noAlbum}</p>
                 : (
-                  <>
+                  <ul className="divide-y divide-gray-100">
                     { album.map((results, index) => (
-                      <p key={ index }>
+                      <li key={ index } className="flex justify-between gap-x-6 py-5">
+                        <img src={ results.artworkUrl100 } alt="album" />
                         { results.collectionName }
+
                         <Link
                           to={ `/album/${results.collectionId
                           }` }
                           data-testid={ `link-to-album-${results.collectionId}` }
                         >
-                          Link
+                          Acesse
                         </Link>
-                      </p>))}
-                  </>
+                      </li>))}
+                  </ul>
                 ) }
             </form>
           )}

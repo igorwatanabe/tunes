@@ -39,19 +39,24 @@ class Profile extends React.Component {
       userImg,
     } = this.state;
     return (
-      <div data-testid="page-profile">
-        <Link to="/profile/edit">
-          <button>Editar perfil</button>
-        </Link>
+      <div data-testid="page-profile" className="flex flex-col justify-center items-center">
         { isLoading ? <Loading />
           : (
-            <>
+            <div>
               <p>{userName}</p>
               <p>{userEmail}</p>
               <p>{userDescription}</p>
               <img data-testid="profile-image" src={ userImg } alt="imagem do usuário" />
-            </>
+            </div>
           )}
+
+        <Link to="/profile/edit">
+          <button
+            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          >
+            Editar perfil
+          </button>
+        </Link>
       </div>
     );
   }

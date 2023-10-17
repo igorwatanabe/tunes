@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import getMusics from '../services/musicsAPI';
+import React from 'react';
 import MusicCard from '../components/MusicCard';
+import getMusics from '../services/musicsAPI';
 
 class Album extends React.Component {
   state = {
@@ -27,8 +27,20 @@ class Album extends React.Component {
           (element.wrapperType === 'collection')
             ? (
               <div key={ index }>
-                <p data-testid="artist-name">{ element.artistName }</p>
-                <p data-testid="album-name">{ element.collectionName }</p>
+                <img src={ element.artworkUrl100 } alt="album" className="mx-auto" />
+                <p
+                  data-testid="album-name"
+                  className="flex justify-center"
+                >
+                  { element.collectionName }
+                </p>
+                <p
+                  data-testid="artist-name"
+                  className="flex justify-center"
+                >
+                  { element.artistName }
+
+                </p>
               </div>
             ) : (
               <MusicCard

@@ -33,32 +33,38 @@ class Header extends React.Component {
 
     return (
       <header data-testid="header-component">
-        <Link
-          data-testid="link-to-search"
-          className="link"
-          to="/search"
-        >
-          Search
-        </Link>
-        <Link
-          data-testid="link-to-favorites"
-          className="link"
-          to="/favorites"
-        >
-          Favorites
-        </Link>
-        <Link
-          data-testid="link-to-profile"
-          className="link"
-          to="/profile"
-        >
-          Profile
-        </Link>
-        {(isLoading) ? <h2><Loading /></h2>
-          : (
-            <h2 data-testid="header-user-name">
-              {loginName}
-            </h2>)}
+        <nav className="flex items-center justify-around p-6 lg:px-8" aria-label="Global">
+          <Link
+            data-testid="link-to-search"
+            className="text-sm font-semibold leading-6 text-gray-900"
+            to="/search"
+          >
+            Search
+          </Link>
+          <Link
+            data-testid="link-to-favorites"
+            className="text-sm font-semibold leading-6 text-gray-900"
+            to="/favorites"
+          >
+            Favorites
+          </Link>
+
+          <Link
+            data-testid="link-to-profile"
+            className="text-sm font-semibold leading-6 text-gray-900"
+            to="/profile"
+          >
+            Profile
+          </Link>
+        </nav>
+        <div className="flex items-center justify-around text-3xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+          {(isLoading) ? <h2><Loading /></h2>
+            : (
+              <h2 data-testid="header-user-name">
+                {loginName}
+              </h2>)}
+        </div>
+
       </header>
     );
   }

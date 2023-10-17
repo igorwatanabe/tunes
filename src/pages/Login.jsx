@@ -1,8 +1,8 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
-import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import { createUser } from '../services/userAPI';
 
 class Login extends React.Component {
   state = {
@@ -55,19 +55,30 @@ class Login extends React.Component {
     } = this.state;
 
     return (
-      <div data-testid="page-login">
+      <div
+        data-testid="page-login"
+        className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
+      >
         {(isLoading) ? <h2><Loading /></h2>
           : (
             <form>
               <input
+                className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20
+                text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
+                focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm
+                sm:leading-6"
                 type="text"
                 name="loginName"
                 value={ loginName }
                 data-testid="login-name-input"
-                placeholder="Nome"
+                placeholder=" Nome"
                 onChange={ this.onInputChange }
               />
               <button
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5
+                text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500
+                focus-visible:outline focus-visible:outline-2
+                focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 data-testid="login-submit-button"
                 disabled={ buttonDisabled }
                 onClick={ () => this.onClickEntrar({ name: loginName }) }

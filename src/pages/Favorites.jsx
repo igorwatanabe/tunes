@@ -1,7 +1,7 @@
 import React from 'react';
-import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Favorites extends React.Component {
   state = {
